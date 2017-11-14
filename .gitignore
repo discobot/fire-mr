@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+.cache/*
+*.ipynb
+*.egg-info
+.idea/*
+
+hw2/resource/graph_data.txt
+hw2/resource/text_corpus.txt
+hw2/resource/travel_times.txt
