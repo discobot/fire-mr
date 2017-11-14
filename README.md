@@ -2,6 +2,6 @@
 
 $ python -m pytest
 
-# Run graph for yandex maps
+# Run trafic processing for yandex maps
 
 hw2/bin(master)$ python main.py
