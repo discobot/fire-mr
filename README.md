@@ -1,3 +1,5 @@
+https://gitlab.com/jhilary/fire-mr/raw/master/hw2/resource/trafic.png
+
 # Run tests
 
 $ python -m pytest
