@@ -1,3 +1,4 @@
+<img src="https://gitlab.com/jhilary/fire-mr/raw/master/hw2/resource/trafic.png" width="500">
 # Run tests
 
 $ python -m pytest
@@ -6,4 +7,3 @@ $ python -m pytest
 
 hw2/bin(master)$ python main.py
 
-![traffic pic](https://gitlab.com/jhilary/fire-mr/raw/master/hw2/resource/trafic.png)
