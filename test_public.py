@@ -4,6 +4,10 @@ import algorithms
 from itertools import cycle, islice
 
 
+def sorted_eq(tb1, tb2, key):
+    return sorted(tb1, key=lambda x: tuple(x[k] for k in key)) == \
+           sorted(tb2, key=lambda x: tuple(x[k] for k in key))
+
 def test_word_count():
     docs = [
         {'doc_id': 1, 'text': 'hello, my little WORLD'},
@@ -25,6 +29,7 @@ def test_word_count():
 
     assert result == etalon
 
+
 def test_word_count_multiple_call():
     g = algorithms.build_word_count_graph('text')
 
@@ -44,9 +49,8 @@ def test_word_count_multiple_call():
         text=rows1
     )
 
-    assert result1 == etalon1
 
-    rows1 = [
+    rows2 = [
         {'doc_id': 1, 'text': 'hello, my little WORLD'},
         {'doc_id': 2, 'text': 'Hello, my little little hell'}
     ]
@@ -60,12 +64,11 @@ def test_word_count_multiple_call():
     ]
 
     result2 = g.run(
-        text=rows2
+        text=rows2,
+	verbose=True
     )
 
-
-    assert result2 == etalon2
-
+    assert sorted_eq(etalon2, result2, ['text'])
 
 
 def test_tf_idf():
@@ -118,7 +121,6 @@ def test_pmi():
     result = g.run(texts=iter(rows))
 
     assert etalon == result
-
 
 
 def test_yandex_maps():

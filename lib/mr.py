@@ -130,7 +130,6 @@ class ReadIterMe(Graph):
         self.name = name
 
     def __call__(self, **kwargs):
-        print('?????', kwargs)
         for r in kwargs[self.name]:
             yield r
 
@@ -166,7 +165,6 @@ class ParametrizedGraph:
 
     def run(self, **kwargs):
         if not self.output:
-            print('!!!', self.params.items(), kwargs)
             params = {k: v.run(**kwargs) for k, v in self.params.items()}
             self.output = list(self.graph(**params, **kwargs))
 
@@ -257,9 +255,12 @@ class FireMR:
 
     def run(self, verbose=True, **kwargs):
         path = self.get_path()
-        print('!!!!!!!!!!!!', kwargs)
         if verbose:
             logger.error("Execution path: {}".format(", ".join(p.name for p in path)))
+
+        for p in self.get_path():
+            p.output=None
+
         for p in self.get_path():
             p.run(**kwargs)
 
